@@ -1,0 +1,32 @@
+"use client";
+import { useRouter } from "next/navigation";
+
+import Navbar from "@/components/component/Navbar";
+import Footer from "@/components/component/Footer";
+
+export default function Layout({
+    children,
+}: {
+    children: React.ReactNode;
+}) {
+    const router = useRouter();
+
+    return (
+        <>
+            <Navbar
+                ShimmerButtonProps={{
+                    text: "Contribute",
+                    onClick: () => router.push('/contribute')
+                }}
+            />
+            <main className="container mx-auto px-6 flex-grow sm:mt-20 mt-12">
+                <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
+                    <div className="inline-block text-center justify-center">
+                        {children}
+                    </div>
+                </section>
+            </main>
+            <Footer />
+        </>
+    );
+}
